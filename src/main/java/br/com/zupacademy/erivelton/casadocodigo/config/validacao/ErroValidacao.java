@@ -27,9 +27,19 @@ public class ErroValidacao extends ResponseEntityExceptionHandler{
 	
 	@ResponseStatus(value = HttpStatus.BAD_REQUEST)
 	@ExceptionHandler(SQLIntegrityConstraintViolationException.class)
-	public ErroFormulario erroDeUnicidadeEmail() {
-		ErroFormulario erroFormulario = new ErroFormulario("email", "Erro!! E-mail solicitado já está cadastrado no banco de dados", LocalDateTime.now());
-		return erroFormulario;
+	public ErroFormulario erroDeUnicidadeEmail(SQLIntegrityConstraintViolationException ex) {
+		
+		ErroFormulario erroFormulario = null;
+		
+		//Solução inicial, ainda terá mudanças
+		if(ex.getLocalizedMessage().contains("@")){
+			erroFormulario = new ErroFormulario("email", "Erro!! E-mail solicitado já está cadastrado no banco de dados", LocalDateTime.now());
+			return erroFormulario;
+		} else {
+			erroFormulario = new ErroFormulario("Nome", "Erro!! Nome solicitado já está cadastrado no banco de dados", LocalDateTime.now());
+			return erroFormulario;
+		}
+		
 	}
 	
 	@Override
@@ -45,6 +55,6 @@ public class ErroValidacao extends ResponseEntityExceptionHandler{
 			erroFormularios.add(erro);
 		});
 		
-		return handleExceptionInternal(ex, erroFormularios, new HttpHeaders(), status, request);
+		return handleExceptionInternal(ex, erroFormularios, headers, status, request);
 	}
 }
