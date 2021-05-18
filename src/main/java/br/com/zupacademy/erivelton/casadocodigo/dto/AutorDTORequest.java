@@ -4,6 +4,10 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
+import br.com.zupacademy.erivelton.casadocodigo.entidade.Autor;
+import br.com.zupacademy.erivelton.casadocodigo.validacaounicidade.UniqueValue;
+
+
 public class AutorDTORequest {
 	
 	@NotBlank
@@ -11,6 +15,7 @@ public class AutorDTORequest {
 	
 	@Email
 	@NotBlank
+	@UniqueValue(domainClass = Autor.class, fieldName = "email")
 	private String email;
 	
 	@NotBlank
