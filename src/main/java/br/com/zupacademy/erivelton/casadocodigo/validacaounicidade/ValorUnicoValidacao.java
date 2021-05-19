@@ -26,8 +26,8 @@ public class ValorUnicoValidacao implements ConstraintValidator<UniqueValue, Obj
 	public boolean isValid(Object value, ConstraintValidatorContext context) {
 		Query query = em.createQuery("select 1 from " + classe.getName() + " where " + atributoDoDominio + "=:valor");
 		query.setParameter("valor", value);
-		List<?> list = query.getResultList();
-		return list.isEmpty();
+		List<?> resultado = query.getResultList();
+		return resultado.isEmpty();
 	}
 
 }

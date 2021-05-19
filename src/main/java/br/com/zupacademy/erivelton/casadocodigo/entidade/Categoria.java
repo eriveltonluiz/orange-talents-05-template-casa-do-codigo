@@ -7,8 +7,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
 
-import br.com.zupacademy.erivelton.casadocodigo.validacaounicidade.UniqueValue;
-
 @Entity
 public class Categoria {
 	
@@ -18,10 +16,14 @@ public class Categoria {
 	
 	@Column(unique = true)
 	@NotBlank
-	@UniqueValue(domainClass = Categoria.class, fieldName = "nome")
 	private String nome;
 
+	@Deprecated
+	public Categoria (){
+	}
+	
 	public Categoria(@NotBlank String nome) {
+		super();
 		this.nome = nome;
 	}
 

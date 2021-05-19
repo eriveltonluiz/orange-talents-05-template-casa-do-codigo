@@ -26,4 +26,5 @@ public class AutorControle {
 		autorRepositorio.save(autor);
 		return ResponseEntity.ok(autorRequest);
 	}
+	
 }
