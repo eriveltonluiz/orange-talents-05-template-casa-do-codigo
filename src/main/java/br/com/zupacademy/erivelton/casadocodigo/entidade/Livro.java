@@ -72,7 +72,7 @@ public class Livro {
 		this.categoria = categoria;
 		this.autor = autor;
 	}
-
+	
 	@Override
 	public String toString() {
 		return "Livro [titulo=" + titulo + "]";

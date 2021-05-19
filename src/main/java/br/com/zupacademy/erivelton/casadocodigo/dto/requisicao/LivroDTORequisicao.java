@@ -1,4 +1,4 @@
-package br.com.zupacademy.erivelton.casadocodigo.dto;
+package br.com.zupacademy.erivelton.casadocodigo.dto.requisicao;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -25,7 +25,7 @@ import br.com.zupacademy.erivelton.casadocodigo.entidade.Categoria;
 import br.com.zupacademy.erivelton.casadocodigo.entidade.Livro;
 import br.com.zupacademy.erivelton.casadocodigo.validacaounicidade.UniqueValue;
 
-public class LivroDTORequest {
+public class LivroDTORequisicao {
 
 	@NotBlank
 	@UniqueValue(domainClass = Livro.class, fieldName = "titulo")
@@ -60,7 +60,7 @@ public class LivroDTORequest {
 	@NotNull
 	private Long autorId;
 
-	public LivroDTORequest(@NotBlank String titulo, @NotBlank @Size(max = 500) String resumo,
+	public LivroDTORequisicao(@NotBlank String titulo, @NotBlank @Size(max = 500) String resumo,
 			@NotNull @Min(100) Long pagina, String sumario, @NotNull @DecimalMin("20") BigDecimal preco,
 			@NotBlank @ISBN(type = Type.ISBN_13) String isbn, @Future LocalDate dataPublicacao, @NotNull Long categoriaId,
 			@NotNull Long autorId) {

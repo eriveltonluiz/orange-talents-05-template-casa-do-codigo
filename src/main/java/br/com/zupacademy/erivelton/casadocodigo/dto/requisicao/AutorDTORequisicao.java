@@ -1,4 +1,4 @@
-package br.com.zupacademy.erivelton.casadocodigo.dto;
+package br.com.zupacademy.erivelton.casadocodigo.dto.requisicao;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -8,7 +8,7 @@ import br.com.zupacademy.erivelton.casadocodigo.entidade.Autor;
 import br.com.zupacademy.erivelton.casadocodigo.validacaounicidade.UniqueValue;
 
 
-public class AutorDTORequest {
+public class AutorDTORequisicao {
 	
 	@NotBlank
 	private String nome;
@@ -22,7 +22,7 @@ public class AutorDTORequest {
 	@Size(max = 400)
 	private String descricao;
 
-	public AutorDTORequest(@NotBlank String nome, @Email @NotBlank String email,
+	public AutorDTORequisicao(@NotBlank String nome, @Email @NotBlank String email,
 			@NotBlank @Size(max = 400) String descricao) {
 		this.nome = nome;
 		this.email = email;

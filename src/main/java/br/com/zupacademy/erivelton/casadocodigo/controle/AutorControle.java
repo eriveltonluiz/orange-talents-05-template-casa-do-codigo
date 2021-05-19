@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.zupacademy.erivelton.casadocodigo.dto.AutorDTORequest;
+import br.com.zupacademy.erivelton.casadocodigo.dto.requisicao.AutorDTORequisicao;
 import br.com.zupacademy.erivelton.casadocodigo.entidade.Autor;
 import br.com.zupacademy.erivelton.casadocodigo.repositorio.AutorRepositorio;
 
@@ -21,7 +21,7 @@ public class AutorControle {
 	
 	@PostMapping(value = "/autores")
 	@Transactional
-	public ResponseEntity<AutorDTORequest> salvar(@RequestBody @Valid AutorDTORequest autorRequest){
+	public ResponseEntity<AutorDTORequisicao> salvar(@RequestBody @Valid AutorDTORequisicao autorRequest){
 		Autor autor = new Autor(autorRequest.getNome(), autorRequest.getEmail(), autorRequest.getDescricao());
 		autorRepositorio.save(autor);
 		return ResponseEntity.ok(autorRequest);
