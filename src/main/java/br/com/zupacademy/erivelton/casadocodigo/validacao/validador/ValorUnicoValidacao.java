@@ -1,4 +1,4 @@
-package br.com.zupacademy.erivelton.casadocodigo.validacaounicidade;
+package br.com.zupacademy.erivelton.casadocodigo.validacao.validador;
 
 import java.util.List;
 
@@ -7,6 +7,8 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
+
+import br.com.zupacademy.erivelton.casadocodigo.validacao.anotacao.UniqueValue;
 
 public class ValorUnicoValidacao implements ConstraintValidator<UniqueValue, Object>{
 

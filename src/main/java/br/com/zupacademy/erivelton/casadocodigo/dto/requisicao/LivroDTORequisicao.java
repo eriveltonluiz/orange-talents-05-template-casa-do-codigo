@@ -17,13 +17,11 @@ import org.hibernate.validator.constraints.ISBN.Type;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonFormat.Shape;
 
-import br.com.zupacademy.erivelton.casadocodigo.config.excecao.AutorECategoriaNaoEncontradoExcecao;
-import br.com.zupacademy.erivelton.casadocodigo.config.excecao.AutorNaoEncontradoExcecao;
-import br.com.zupacademy.erivelton.casadocodigo.config.excecao.CategoriaNaoEncontradaExcecao;
 import br.com.zupacademy.erivelton.casadocodigo.entidade.Autor;
 import br.com.zupacademy.erivelton.casadocodigo.entidade.Categoria;
 import br.com.zupacademy.erivelton.casadocodigo.entidade.Livro;
-import br.com.zupacademy.erivelton.casadocodigo.validacaounicidade.UniqueValue;
+import br.com.zupacademy.erivelton.casadocodigo.validacao.anotacao.ExisteId;
+import br.com.zupacademy.erivelton.casadocodigo.validacao.anotacao.UniqueValue;
 
 public class LivroDTORequisicao {
 
@@ -55,9 +53,11 @@ public class LivroDTORequisicao {
 	private LocalDate dataPublicacao;
 
 	@NotNull
+	@ExisteId(classe = Categoria.class)
 	private Long categoriaId;
 
 	@NotNull
+	@ExisteId(classe = Autor.class)
 	private Long autorId;
 
 	public LivroDTORequisicao(@NotBlank String titulo, @NotBlank @Size(max = 500) String resumo,
@@ -79,14 +79,6 @@ public class LivroDTORequisicao {
 		Categoria categoria = em.find(Categoria.class, categoriaId);
 		Autor autor = em.find(Autor.class, autorId);
 
-		if (categoria == null && autor != null) {
-			throw new CategoriaNaoEncontradaExcecao();
-		} else if (autor == null && categoria != null) {
-			throw new AutorNaoEncontradoExcecao();
-		} else if (autor == null && categoria == null) {
-			throw new AutorECategoriaNaoEncontradoExcecao();
-		}
-		
 		return new Livro(titulo, resumo, pagina, sumario, preco, isbn, dataPublicacao, categoria, autor);
 	}
 

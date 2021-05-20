@@ -1,4 +1,4 @@
-package br.com.zupacademy.erivelton.casadocodigo.validacaounicidade;
+package br.com.zupacademy.erivelton.casadocodigo.validacao.anotacao;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
@@ -9,13 +9,15 @@ import java.lang.annotation.Target;
 import javax.validation.Constraint;
 import javax.validation.Payload;
 
+import br.com.zupacademy.erivelton.casadocodigo.validacao.validador.ValorUnicoValidacao;
+
 @Documented
 @Constraint(validatedBy = {ValorUnicoValidacao.class})
 @Target({ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface UniqueValue {
 	
-	String message() default "solicitado já está cadastrado";
+	String message() default "Campo solicitado já está cadastrado";
 	
 	Class<?>[] groups()default { };
 

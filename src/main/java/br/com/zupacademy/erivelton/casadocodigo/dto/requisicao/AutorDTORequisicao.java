@@ -5,7 +5,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 import br.com.zupacademy.erivelton.casadocodigo.entidade.Autor;
-import br.com.zupacademy.erivelton.casadocodigo.validacaounicidade.UniqueValue;
+import br.com.zupacademy.erivelton.casadocodigo.validacao.anotacao.UniqueValue;
 
 
 public class AutorDTORequisicao {

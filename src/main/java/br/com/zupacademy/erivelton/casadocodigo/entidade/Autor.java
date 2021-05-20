@@ -12,7 +12,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
-import br.com.zupacademy.erivelton.casadocodigo.validacaounicidade.UniqueValue;
+import br.com.zupacademy.erivelton.casadocodigo.validacao.anotacao.UniqueValue;
 
 @SuppressWarnings("unused")
 @Entity
